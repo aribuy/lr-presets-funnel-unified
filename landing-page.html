@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>97,000+ Professional Lightroom Presets | ARIBUY Presets</title>
+    <meta name="description" content="World's largest collection of 97K+ professional Lightroom presets used by top photographers & influencers. Instant download, lifetime access, 60-day guarantee.">
+    <link rel="icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            /* Unified Theme Variables - Consistent with integrated funnel system */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --dark-alt: #374151;
+            --light: #ffffff;
+            --gray: #6b7280;
+            --gray-light: #f3f4f6;
+            --gray-border: #e5e7eb;
+            
+            /* Updated gradients for consistent theme */
+            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #f97316 100%);
+            --gradient-success: linear-gradient(135deg, var(--accent) 0%, #059669 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Typography - Unified fonts */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Legacy compatibility for existing content */
+            --primary-color: var(--primary);
+            --secondary-color: var(--dark);
+            --accent-color: var(--secondary);
+            --success-color: var(--accent);
+            --warning-color: var(--secondary);
+            --danger-color: var(--danger);
+            --light-bg: var(--gray-light);
+            --dark-bg: var(--dark);
+            --text-primary: var(--dark);
+            --text-secondary: var(--gray);
+            --white: var(--light);
+            --border-color: var(--gray-border);
+            --gradient-main: var(--gradient-hero);
+            --font-display: var(--font-heading);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            background: var(--gradient-success);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Language Detection Banner */
+        #language-banner {
+            background: var(--gradient-hero);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+        }
+
+        #language-banner button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            padding: 6px 16px;
+            margin: 0 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        #language-banner button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 29px; /* Account for demo banner */
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-hero);
+            border-radius: 12px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cta-button {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 140px 0 80px; /* Account for fixed header */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-80px) translateX(80px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            margin-top: 40px;
+        }
+
+        .cta-primary {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 20px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
+
+        .cta-primary:hover {
+            background: #f97316;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--gray-light);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-badge {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-hero);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .testimonials-header .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-header .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .author-info span {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 40px auto;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-submit {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 18px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-submit:hover {
+            background: #f97316;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-form {
+                flex-direction: column;
+            }
+            
+            .email-input {
+                min-width: auto;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+        }
+
+        /* Loading Animations */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🎭 DEMO MODE - Unified Theme Applied | Navigate through complete funnel experience
+    </div>
+
+    <!-- Language Banner (if needed) -->
+    <div id="language-banner">
+        <span>🌍 Website also available in:</span>
+        <button onclick="changeLanguage('es')">Español</button>
+        <button onclick="changeLanguage('fr')">Français</button>
+        <button onclick="changeLanguage('de')">Deutsch</button>
+        <button onclick="hideLanguageBanner()">×</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">📸</div>
+                ARIBUY
+            </a>
+            
+            <div class="header-cta">
+                <a href="checkout.html" class="cta-button secondary">Member Login</a>
+                <a href="checkout.html" class="cta-button" onclick="trackEvent('header_cta_click')">Get Presets</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content animate-fadeInUp">
+                <div class="hero-badge">✨ World's Largest Preset Collection</div>
+                <h1 class="hero-title">97,000+ Professional Lightroom Presets</h1>
+                <p class="hero-subtitle">Transform your photos instantly with presets used by top photographers and influencers worldwide. Lifetime access, instant download, 60-day guarantee.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item animate-scaleIn">
+                        <span class="stat-number">97,000+</span>
+                        <span class="stat-label">Professional Presets</span>
+                    </div>
+                    <div class="stat-item animate-scaleIn">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-item animate-scaleIn">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Customer Rating</span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="checkout.html" class="cta-primary" onclick="trackEvent('hero_cta_click')">Get Instant Access</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header animate-fadeInUp">
+                <div class="section-badge">🏆 Premium Features</div>
+                <h2 class="section-title">Everything You Need to Create Stunning Photos</h2>
+                <p class="section-description">Professional-grade presets and tools used by the world's best photographers and content creators.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-slideInLeft">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Instant Transform</h3>
+                    <p class="feature-description">Apply professional-grade edits to your photos with just one click. No technical knowledge required.</p>
+                </div>
+                
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">97K+ Presets</h3>
+                    <p class="feature-description">Largest collection of professional presets covering every style, mood, and photography genre.</p>
+                </div>
+                
+                <div class="feature-card animate-slideInRight">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Mobile + Desktop</h3>
+                    <p class="feature-description">Compatible with Lightroom Mobile, Desktop, and Photoshop. Edit anywhere, anytime.</p>
+                </div>
+                
+                <div class="feature-card animate-slideInLeft">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Pro Community</h3>
+                    <p class="feature-description">Join exclusive community of photographers sharing tips, feedback, and inspiration.</p>
+                </div>
+                
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Lifetime Updates</h3>
+                    <p class="feature-description">New presets added monthly. Once you buy, you get access to all future updates forever.</p>
+                </div>
+                
+                <div class="feature-card animate-slideInRight">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">60-Day Guarantee</h3>
+                    <p class="feature-description">Try risk-free for 60 days. Not satisfied? Get a full refund, no questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="testimonials-header animate-fadeInUp">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-description">Join thousands of satisfied photographers who transformed their work with our presets</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-slideInLeft">
+                    <div class="testimonial-content">
+                        "These presets completely transformed my Instagram feed. I went from 2K to 50K followers in just 3 months using ARIBUY presets!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <span>Travel Photographer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-fadeInUp">
+                    <div class="testimonial-content">
+                        "As a wedding photographer, these presets save me hours of editing time. The quality is incredible and clients love the results."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>James Davis</h4>
+                            <span>Wedding Photographer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-slideInRight">
+                    <div class="testimonial-content">
+                        "Best investment for my photography business. The variety of styles means I can match any client's vision perfectly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Maria Rodriguez</h4>
+                            <span>Portrait Photographer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="cta-container">
+            <h2 class="cta-title animate-fadeInUp">Ready to Transform Your Photography?</h2>
+            <p class="cta-description animate-fadeInUp">Get instant access to 97,000+ professional presets and join the world's largest photography community</p>
+            
+            <form class="cta-form" id="leadForm">
+                <input type="email" class="email-input" placeholder="Enter your email address" id="emailInput" required>
+                <button type="submit" class="cta-submit">Get Instant Access</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+                <a href="#" class="footer-link">Affiliate Program</a>
+            </div>
+            <p>&copy; 2024 ARIBUY Presets. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📸 ARIBUY Presets Landing Page Loaded');
+            
+            // Check demo mode
+            const isDemoMode = window.location.search.includes('demo=true') || localStorage.getItem('demoMode') === 'true';
+            
+            if (isDemoMode) {
+                // Auto-fill email for demo
+                const emailInput = document.getElementById('emailInput');
+                if (emailInput && !emailInput.value) {
+                    emailInput.value = 'photographer@example.com';
+                }
+                console.log('🎭 Landing Page Demo Mode Active');
+            }
+            
+            // Track page view
+            trackEvent('landing_page_viewed', {
+                demo_mode: isDemoMode,
+                source: window.location.search
+            });
+            
+            // Initialize animations
+            initializeAnimations();
+            
+            // Auto-hide language banner after 10 seconds
+            setTimeout(() => {
+                hideLanguageBanner();
+            }, 10000);
+        });
+
+        // Lead capture form
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const button = e.target.querySelector('.cta-submit');
+            
+            // Store email
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('leadCaptured', 'true');
+            localStorage.setItem('demoMode', 'true'); // Enable demo mode for testing
+            
+            // Show loading state
+            button.innerHTML = 'Processing...';
+            button.disabled = true;
+            
+            // Track lead capture
+            trackEvent('lead_captured', {
+                email: email,
+                source: 'landing_page_form'
+            });
+            
+            // Simulate processing and redirect
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 1500);
+        });
+
+        // Analytics tracking
+        function trackEvent(event, properties = {}) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', event, {
+                    event_category: 'funnel',
+                    event_label: 'landing_page',
+                    ...properties
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', event, properties);
+            }
+            
+            // Custom tracking
+            console.log('📊 Event tracked:', event, properties);
+            
+            // Store in session for cross-page tracking
+            const events = JSON.parse(sessionStorage.getItem('funnelEvents') || '[]');
+            events.push({
+                event: event,
+                properties: properties,
+                timestamp: new Date().toISOString(),
+                page: 'landing_page'
+            });
+            sessionStorage.setItem('funnelEvents', JSON.stringify(events));
+        }
+
+        // Initialize animations when elements come into view
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Language functions
+        function changeLanguage(lang) {
+            console.log('Language changed to:', lang);
+            trackEvent('language_changed', { language: lang });
+            hideLanguageBanner();
+        }
+
+        function hideLanguageBanner() {
+            const banner = document.getElementById('language-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Demo helpers
+        window.landingDemoHelpers = {
+            skipToCheckout: function() {
+                localStorage.setItem('userEmail', 'photographer@example.com');
+                localStorage.setItem('leadCaptured', 'true');
+                localStorage.setItem('demoMode', 'true');
+                window.location.href = 'checkout.html';
+            },
+            fillEmail: function(email = 'photographer@example.com') {
+                document.getElementById('emailInput').value = email;
+            },
+            showLanguageBanner: function() {
+                document.getElementById('language-banner').style.display = 'block';
+            }
+        };
+
+        console.log('📞 Landing Demo helpers: landingDemoHelpers.skipToCheckout(), landingDemoHelpers.fillEmail(), landingDemoHelpers.showLanguageBanner()');
+    </script>
+</body>
+</html>

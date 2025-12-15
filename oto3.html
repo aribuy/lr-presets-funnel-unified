@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Mastermind - Exclusive Access - ARIBUY Presets</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        gtag('event', 'oto3_view', {
+            'event_category': 'Upsell',
+            'event_label': 'VIP Mastermind'
+        });
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+        fbq('track', 'ViewContent', {
+            content_name: 'OTO3 VIP Mastermind',
+            content_category: 'Upsell',
+            value: 297,
+            currency: 'USD'
+        });
+    </script>
+    
+    <style>
+        :root {
+            /* Unified Theme Variables */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --dark-alt: #374151;
+            --light: #ffffff;
+            --gray: #6b7280;
+            --gray-light: #f3f4f6;
+            
+            --vip-purple: #7c3aed;
+            --vip-pink: #ec4899;
+            
+            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #f97316 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            --gradient-vip: linear-gradient(135deg, var(--vip-purple) 0%, var(--vip-pink) 100%);
+            
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--gradient-dark);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            background: var(--gradient-secondary);
+            color: var(--dark);
+            text-align: center;
+            padding: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        /* VIP Header */
+        .vip-header {
+            background: var(--gradient-vip);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vip-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .vip-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,20 80,80 20,80" fill="rgba(124,58,237,0.05)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-80px) translateX(80px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vip-badge {
+            background: var(--gradient-secondary);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            display: inline-block;
+            animation: glow 2s ease-in-out infinite alternate;
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
+            to { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: var(--gradient-vip);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            margin-bottom: 50px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Spots Counter */
+        .spots-counter {
+            background: var(--danger);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 500px;
+            text-align: center;
+            animation: urgentPulse 2s infinite;
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+        }
+
+        .spots-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .spots-number {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .spots-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* VIP Offer Section */
+        .vip-offer {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .offer-container {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 0 auto;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+        }
+
+        .offer-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .offer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vip-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+        }
+
+        .offer-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .offer-description {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Price Showcase */
+        .price-showcase {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .original-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .vip-price {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+
+        .price-savings {
+            background: var(--gradient-secondary);
+            color: var(--dark);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .feature-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .vip-button {
+            padding: 25px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: var(--font-heading);
+        }
+
+        .accept-vip {
+            background: var(--gradient-secondary);
+            color: var(--dark);
+            border: 3px solid var(--secondary);
+        }
+
+        .accept-vip:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .decline-vip {
+            background: transparent;
+            color: var(--danger);
+            border: 3px solid var(--danger);
+        }
+
+        .decline-vip:hover {
+            background: var(--danger);
+            color: var(--light);
+            transform: translateY(-3px);
+        }
+
+        /* Testimonials */
+        .vip-testimonials {
+            background: var(--dark-alt);
+            padding: 80px 0;
+            margin: 80px 0;
+            border-radius: 30px;
+        }
+
+        .testimonials-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--secondary);
+        }
+
+        .testimonial-spotlight {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: var(--light);
+        }
+
+        .testimonial-author-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .author-details h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .author-details p {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .revenue-highlight {
+            background: var(--gradient-secondary);
+            color: var(--dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--danger);
+        }
+
+        .final-text {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .guarantee-section {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .guarantee-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .guarantee-text {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .action-buttons {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-author-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .price-showcase {
+                padding: 30px 20px;
+            }
+            
+            .vip-price {
+                font-size: 3rem;
+            }
+        }
+
+        /* Loading States */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🎭 DEMO MODE - OTO3 VIP Mastermind | Final exclusive offer with VIP access
+    </div>
+
+    <!-- VIP Header -->
+    <header class="vip-header">
+        <div class="vip-header-content">
+            👑 VIP MASTERMIND - EXCLUSIVE ACCESS 👑
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="vip-badge">⚡ FINAL EXCLUSIVE OFFER ⚡</div>
+                <h1 class="hero-title">Join My Inner Circle VIP Mastermind</h1>
+                <p class="hero-subtitle">Get direct access to me personally, advanced photography strategies I've never shared publicly, and join an elite group of photographers scaling to 6-figures</p>
+                
+                <div class="spots-counter">
+                    <div class="spots-title">Only</div>
+                    <div class="spots-number" id="spotsLeft">5</div>
+                    <div class="spots-text">VIP Spots Remaining This Month</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Offer -->
+        <section class="vip-offer">
+            <div class="offer-container">
+                <div class="offer-content">
+                    <div class="vip-icon">👑</div>
+                    <h2 class="offer-title">VIP Mastermind</h2>
+                    <p class="offer-description">This is your final chance to join my exclusive inner circle and get direct access to the photography strategies that have generated over $2M in revenue for my students</p>
+                    
+                    <div class="price-showcase">
+                        <div class="original-price">Regular Value: $2,997</div>
+                        <div class="vip-price">$297</div>
+                        <div class="price-savings">Save $2,700 Today!</div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📱</span>
+                            <h3 class="feature-title">Direct Access to Me</h3>
+                            <p class="feature-description">Text me directly for urgent questions and get personal guidance from someone who's built multiple 6-figure photography businesses</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3 class="feature-title">Advanced Strategies</h3>
+                            <p class="feature-description">Learn the cutting-edge photography business tactics I don't share anywhere else - only available to VIP members</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">🚀</span>
+                            <h3 class="feature-title">Done-With-You Campaigns</h3>
+                            <p class="feature-description">I'll help you build and optimize your photography business personally for maximum profitability</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <span class="feature-icon">💎</span>
+                            <h3 class="feature-title">VIP-Only Resources</h3>
+                            <p class="feature-description">Access exclusive preset collections, business templates, and insider tools worth over $5,000</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="vip-button decline-vip" onclick="declineVIP()" id="declineBtn">
+                            No Thanks, Continue
+                        </button>
+                        <button class="vip-button accept-vip" onclick="acceptVIP()" id="acceptBtn">
+                            Yes! I Want VIP Access
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Testimonials -->
+        <section class="vip-testimonials">
+            <div class="container">
+                <h2 class="testimonials-title">What VIP Members Are Saying</h2>
+                
+                <div class="testimonial-spotlight">
+                    <p class="testimonial-quote">"Being in the VIP Mastermind changed everything for me. The direct access to advanced photography strategies and personal guidance helped me scale from $20K to $200K in just 10 months. The ROI is absolutely insane!"</p>
+                    
+                    <div class="testimonial-author-section">
+                        <div class="author-avatar">RC</div>
+                        <div class="author-details">
+                            <h4>Rachel Chen</h4>
+                            <p>Wedding Photographer</p>
+                            <div class="revenue-highlight">$200K in 10 Months</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <div class="cta-content">
+                <h2 class="final-title">This Is Your Last Chance</h2>
+                <p class="final-text">This VIP opportunity will never be available again at this price. Join the elite group of photographers who are scaling to 6-figures with my personal guidance.</p>
+                
+                <div class="guarantee-section">
+                    <h3 class="guarantee-title">🛡️ 30-Day VIP Guarantee</h3>
+                    <p class="guarantee-text">If you don't see immediate value in the first 30 days, I'll personally refund every penny AND let you keep everything. That's how confident I am in the VIP program.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('👑 OTO3 VIP Mastermind Loaded');
+            
+            // Check demo mode and previous purchases
+            const isDemoMode = localStorage.getItem('demoMode') === 'true';
+            const previousPurchases = {
+                oto1: localStorage.getItem('oto1_accepted') === 'true',
+                oto2: localStorage.getItem('oto2_accepted') === 'true'
+            };
+            
+            // Track page view
+            trackEvent('oto3_vip_viewed', {
+                demo_mode: isDemoMode,
+                previous_purchases: previousPurchases,
+                source: 'oto2_completion'
+            });
+            
+            // Update spots counter
+            updateSpotsCounter();
+            
+            console.log('🎭 OTO3 VIP Demo Mode Active');
+        });
+
+        // Dynamic spots counter
+        function updateSpotsCounter() {
+            const spots = Math.floor(Math.random() * 5) + 2; // 2-6 spots
+            document.getElementById('spotsLeft').textContent = spots;
+            
+            // Decrease spots periodically for urgency
+            setInterval(() => {
+                const currentSpots = parseInt(document.getElementById('spotsLeft').textContent);
+                if (currentSpots > 1 && Math.random() < 0.3) { // 30% chance to decrease
+                    document.getElementById('spotsLeft').textContent = currentSpots - 1;
+                }
+            }, 45000); // Every 45 seconds
+        }
+
+        // Accept VIP
+        function acceptVIP() {
+            const button = document.getElementById('acceptBtn');
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner"></span>Processing VIP Access...';
+            
+            // Store VIP acceptance
+            localStorage.setItem('vip_accepted', 'true');
+            localStorage.setItem('vip_price', '297');
+            
+            // Track VIP acceptance
+            trackEvent('oto3_vip_accepted', {
+                value: 297,
+                currency: 'USD',
+                demo_mode: true
+            });
+            
+            console.log('👑 VIP Mastermind Accepted - $297');
+            
+            // Simulate processing
+            setTimeout(() => {
+                button.innerHTML = '✅ Welcome to VIP!';
+                button.style.background = 'var(--gradient-secondary)';
+                
+                setTimeout(() => {
+                    button.innerHTML = '🎉 Redirecting to Member Area...';
+                    
+                    // Redirect to thank you page
+                    setTimeout(() => {
+                        window.location.href = 'thank-you.html';
+                    }, 1500);
+                }, 1500);
+            }, 2500);
+        }
+
+        // Decline VIP
+        function declineVIP() {
+            const button = document.getElementById('declineBtn');
+            
+            // Store VIP decline
+            localStorage.setItem('vip_declined', 'true');
+            
+            // Track VIP decline
+            trackEvent('oto3_vip_declined', {
+                demo_mode: true
+            });
+            
+            console.log('❌ VIP Mastermind Declined');
+            
+            // Show final hesitation popup
+            const confirmDecline = confirm(
+                '⚠️ WAIT! Are you absolutely sure?\n\n' +
+                'This VIP price will NEVER be available again.\n\n' +
+                'You\'ll miss out on:\n' +
+                '• Direct access to me personally\n' +
+                '• Advanced photography strategies worth $5,000+\n' +
+                '• Done-with-you business building\n' +
+                '• VIP-only resources and tools\n\n' +
+                'Click OK to continue without VIP access.'
+            );
+            
+            if (confirmDecline) {
+                trackEvent('oto3_vip_decline_confirmed');
+                
+                button.innerHTML = '✅ Continuing to Member Area...';
+                button.style.background = 'var(--accent)';
+                button.style.color = 'white';
+                
+                // Redirect to thank you page
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html';
+                }, 1000);
+            } else {
+                trackEvent('oto3_vip_decline_cancelled');
+                console.log('🔄 User cancelled VIP decline');
+            }
+        }
+
+        // Analytics tracking
+        function trackEvent(event, properties = {}) {
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', event, {
+                    event_category: 'funnel',
+                    event_label: 'oto3_vip',
+                    ...properties
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', event, properties);
+            }
+            
+            // Custom tracking
+            console.log('📊 Event tracked:', event, properties);
+            
+            // Store in session
+            const events = JSON.parse(sessionStorage.getItem('funnelEvents') || '[]');
+            events.push({
+                event: event,
+                properties: properties,
+                timestamp: new Date().toISOString(),
+                page: 'oto3_vip'
+            });
+            sessionStorage.setItem('funnelEvents', JSON.stringify(events));
+        }
+
+        // Track engagement and interactions
+        let startTime = Date.now();
+        setInterval(() => {
+            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            if (timeSpent % 60 === 0) { // Every minute
+                trackEvent('oto3_vip_engagement', {
+                    time_on_page: timeSpent
+                });
+            }
+        }, 1000);
+
+        // Track feature interactions
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const title = this.querySelector('.feature-title').textContent;
+                trackEvent('oto3_vip_feature_hover', {
+                    feature: title
+                });
+            });
+        });
+
+        // Exit intent tracking
+        let exitIntentShown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitIntentShown) {
+                exitIntentShown = true;
+                
+                trackEvent('oto3_vip_exit_intent');
+                
+                // Show exit intent bonus offer
+                const exitOffer = confirm(
+                    '🎯 FINAL BONUS OFFER!\n\n' +
+                    'Before you go... I\'ll throw in a BONUS 1-on-1 strategy call with me personally (worth $500) if you join the VIP Mastermind right now.\n\n' +
+                    'This is my absolute final offer.\n\n' +
+                    'Click OK to accept VIP + Bonus Call for $297'
+                );
+                
+                if (exitOffer) {
+                    // Update button text
+                    document.getElementById('acceptBtn').innerHTML = 'Yes! VIP + Bonus Call ($297)';
+                    
+                    // Scroll to accept button
+                    document.getElementById('acceptBtn').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    trackEvent('oto3_vip_exit_bonus_shown');
+                } else {
+                    trackEvent('oto3_vip_exit_declined');
+                }
+            }
+        });
+
+        // Demo helpers
+        window.oto3DemoHelpers = {
+            acceptVIP: acceptVIP,
+            declineVIP: declineVIP,
+            skipToThankYou: () => {
+                localStorage.setItem('vip_declined', 'true');
+                window.location.href = 'thank-you.html';
+            },
+            simulateExitIntent: () => {
+                exitIntentShown = false;
+                const event = new MouseEvent('mouseleave', {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true,
+                    clientY: -10
+                });
+                document.dispatchEvent(event);
+            }
+        };
+
+        console.log('📞 OTO3 Demo helpers: oto3DemoHelpers.acceptVIP(), oto3DemoHelpers.declineVIP(), oto3DemoHelpers.skipToThankYou()');
+    </script>
+</body>
+</html>
