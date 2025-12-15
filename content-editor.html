@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIBUY Content Editor - Live Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            height: 100vh;
+        }
+
+        .editor-panel {
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .preview-panel {
+            background: white;
+            overflow-y: auto;
+        }
+
+        .editor-header {
+            background: #6366f1;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .section-group {
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #f1f5f9;
+            padding: 12px 15px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-content {
+            padding: 15px;
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .btn-save {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-save:hover {
+            background: #059669;
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .color-input {
+            width: 60px;
+            height: 35px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .price-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .testimonial-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .feature-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Editor Panel -->
+        <div class="editor-panel">
+            <div class="editor-header">
+                🎨 ARIBUY Content Editor
+            </div>
+
+            <!-- Hero Section -->
+            <div class="section-group">
+                <div class="section-header" onclick="toggleSection('hero')">
+                    <span>🚀 Hero Section</span>
+                    <span class="toggle-icon" id="hero-icon">▼</span>
+                </div>
+                <div class="section-content" id="hero-content">
+                    <div class="form-group">
+                        <label class="form-label">Hero Badge</label>
+                        <input type="text" class="form-input" id="hero-badge" value="✨ World's Largest Preset Collection">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hero Title</label>
+                        <input type="text" class="form-input" id="hero-title" value="97,000+ Professional Lightroom Presets">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hero Subtitle</label>
+                        <textarea class="form-input form-textarea" id="hero-subtitle">Transform your photos instantly with presets used by top photographers and influencers worldwide. Lifetime access, instant download, 60-day guarantee.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">CTA Button Text</label>
+                        <input type="text" class="form-input" id="hero-cta" value="Get Instant Access Now">
+                    </div>
+                    <button class="btn-save" onclick="updateHero()">Save Hero</button>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="section-group">
+                <div class="section-header" onclick="toggleSection('features')">
+                    <span>⚡ Features</span>
+                    <span class="toggle-icon" id="features-icon">▼</span>
+                </div>
+                <div class="section-content" id="features-content">
+                    <div id="features-list">
+                        <!-- Features will be populated by JS -->
+                    </div>
+                    <button class="btn-save" onclick="updateFeatures()">Save Features</button>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="section-group">
+                <div class="section-header" onclick="toggleSection('testimonials')">
+                    <span>💬 Testimonials</span>
+                    <span class="toggle-icon" id="testimonials-icon">▼</span>
+                </div>
+                <div class="section-content" id="testimonials-content">
+                    <div id="testimonials-list">
+                        <!-- Testimonials will be populated by JS -->
+                    </div>
+                    <button class="btn-save" onclick="updateTestimonials()">Save Testimonials</button>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="section-group">
+                <div class="section-header" onclick="toggleSection('pricing')">
+                    <span>💰 Pricing</span>
+                    <span class="toggle-icon" id="pricing-icon">▼</span>
+                </div>
+                <div class="section-content" id="pricing-content">
+                    <div id="pricing-list">
+                        <!-- Pricing will be populated by JS -->
+                    </div>
+                    <button class="btn-save" onclick="updatePricing()">Save Pricing</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <iframe src="landing-page.html" class="preview-frame" id="preview-frame"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Content data
+        let contentData = {
+            hero: {
+                badge: "✨ World's Largest Preset Collection",
+                title: "97,000+ Professional Lightroom Presets",
+                subtitle: "Transform your photos instantly with presets used by top photographers and influencers worldwide. Lifetime access, instant download, 60-day guarantee.",
+                cta: "Get Instant Access Now"
+            },
+            features: [
+                {
+                    icon: "⚡",
+                    title: "Instant Transform",
+                    description: "Apply professional-grade edits to your photos with just one click. No technical knowledge required."
+                },
+                {
+                    icon: "🎨",
+                    title: "97K+ Presets",
+                    description: "Largest collection of professional presets covering every style, mood, and photography genre."
+                },
+                {
+                    icon: "📱",
+                    title: "Mobile + Desktop",
+                    description: "Compatible with Lightroom Mobile, Desktop, and Photoshop. Edit anywhere, anytime."
+                },
+                {
+                    icon: "👥",
+                    title: "Pro Community",
+                    description: "Join exclusive community of photographers sharing tips, feedback, and inspiration."
+                },
+                {
+                    icon: "🔄",
+                    title: "Lifetime Updates",
+                    description: "New presets added monthly. Once you buy, you get access to all future updates forever."
+                },
+                {
+                    icon: "🛡️",
+                    title: "60-Day Guarantee",
+                    description: "Try risk-free for 60 days. Not satisfied? Get a full refund, no questions asked."
+                }
+            ],
+            testimonials: [
+                {
+                    name: "Sarah Johnson",
+                    role: "Wedding Photographer",
+                    content: "These presets completely transformed my photography business. My clients love the consistent, professional look across all their photos.",
+                    avatar: "SJ"
+                },
+                {
+                    name: "Mike Chen",
+                    role: "Travel Blogger",
+                    content: "I've tried many preset collections, but ARIBUY's quality is unmatched. The variety and professional results are incredible.",
+                    avatar: "MC"
+                },
+                {
+                    name: "Emma Rodriguez",
+                    role: "Portrait Photographer",
+                    content: "The time I save with these presets allows me to focus on creativity. My Instagram engagement increased by 300%!",
+                    avatar: "ER"
+                }
+            ],
+            pricing: [
+                {
+                    name: "Starter Pro",
+                    badge: "For Beginners",
+                    originalPrice: "$249",
+                    currentPrice: "$97",
+                    features: ["25,000+ Professional Presets", "Mobile + Desktop Compatible", "Basic Video Tutorials", "Email Support", "Commercial License", "Instant Download"]
+                },
+                {
+                    name: "Master Pro",
+                    badge: "⭐ MOST POPULAR",
+                    originalPrice: "$499",
+                    currentPrice: "$197",
+                    features: ["50,000+ Professional Presets", "Advanced Video Masterclass", "Priority Support", "Exclusive Preset Collections", "Commercial License", "Lifetime Updates"]
+                },
+                {
+                    name: "Ultimate Pro",
+                    badge: "Complete Package",
+                    originalPrice: "$999",
+                    currentPrice: "$397",
+                    features: ["97,000+ Complete Collection", "VIP Community Access", "1-on-1 Coaching Calls", "Custom Preset Requests", "Full Commercial Rights", "Everything Included"]
+                }
+            ]
+        };
+
+        // Initialize editor
+        document.addEventListener('DOMContentLoaded', function() {
+            populateFeatures();
+            populateTestimonials();
+            populatePricing();
+            loadSavedContent();
+        });
+
+        // Toggle section visibility
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('rotated');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('rotated');
+            }
+        }
+
+        // Populate features editor
+        function populateFeatures() {
+            const container = document.getElementById('features-list');
+            container.innerHTML = '';
+            
+            contentData.features.forEach((feature, index) => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'feature-item';
+                featureDiv.innerHTML = `
+                    <div class="form-group">
+                        <label class="form-label">Icon</label>
+                        <input type="text" class="form-input" id="feature-icon-${index}" value="${feature.icon}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-input" id="feature-title-${index}" value="${feature.title}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-input form-textarea" id="feature-desc-${index}">${feature.description}</textarea>
+                    </div>
+                `;
+                container.appendChild(featureDiv);
+            });
+        }
+
+        // Populate testimonials editor
+        function populateTestimonials() {
+            const container = document.getElementById('testimonials-list');
+            container.innerHTML = '';
+            
+            contentData.testimonials.forEach((testimonial, index) => {
+                const testimonialDiv = document.createElement('div');
+                testimonialDiv.className = 'testimonial-item';
+                testimonialDiv.innerHTML = `
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" id="testimonial-name-${index}" value="${testimonial.name}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role</label>
+                        <input type="text" class="form-input" id="testimonial-role-${index}" value="${testimonial.role}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Content</label>
+                        <textarea class="form-input form-textarea" id="testimonial-content-${index}">${testimonial.content}</textarea>
+                    </div>
+                `;
+                container.appendChild(testimonialDiv);
+            });
+        }
+
+        // Populate pricing editor
+        function populatePricing() {
+            const container = document.getElementById('pricing-list');
+            container.innerHTML = '';
+            
+            contentData.pricing.forEach((package, index) => {
+                const packageDiv = document.createElement('div');
+                packageDiv.className = 'feature-item';
+                packageDiv.innerHTML = `
+                    <div class="form-group">
+                        <label class="form-label">Package Name</label>
+                        <input type="text" class="form-input" id="pricing-name-${index}" value="${package.name}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Badge</label>
+                        <input type="text" class="form-input" id="pricing-badge-${index}" value="${package.badge}">
+                    </div>
+                    <div class="price-group">
+                        <div class="form-group">
+                            <label class="form-label">Original Price</label>
+                            <input type="text" class="form-input" id="pricing-original-${index}" value="${package.originalPrice}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Current Price</label>
+                            <input type="text" class="form-input" id="pricing-current-${index}" value="${package.currentPrice}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Features (one per line)</label>
+                        <textarea class="form-input form-textarea" id="pricing-features-${index}">${package.features.join('\n')}</textarea>
+                    </div>
+                `;
+                container.appendChild(packageDiv);
+            });
+        }
+
+        // Update functions
+        function updateHero() {
+            const heroData = {
+                badge: document.getElementById('hero-badge').value,
+                title: document.getElementById('hero-title').value,
+                subtitle: document.getElementById('hero-subtitle').value,
+                cta: document.getElementById('hero-cta').value
+            };
+            
+            contentData.hero = heroData;
+            saveContent();
+            updatePreview();
+            showNotification('Hero section updated!');
+        }
+
+        function updateFeatures() {
+            const features = [];
+            contentData.features.forEach((_, index) => {
+                features.push({
+                    icon: document.getElementById(`feature-icon-${index}`).value,
+                    title: document.getElementById(`feature-title-${index}`).value,
+                    description: document.getElementById(`feature-desc-${index}`).value
+                });
+            });
+            
+            contentData.features = features;
+            saveContent();
+            updatePreview();
+            showNotification('Features updated!');
+        }
+
+        function updateTestimonials() {
+            const testimonials = [];
+            contentData.testimonials.forEach((testimonial, index) => {
+                testimonials.push({
+                    name: document.getElementById(`testimonial-name-${index}`).value,
+                    role: document.getElementById(`testimonial-role-${index}`).value,
+                    content: document.getElementById(`testimonial-content-${index}`).value,
+                    avatar: testimonial.avatar
+                });
+            });
+            
+            contentData.testimonials = testimonials;
+            saveContent();
+            updatePreview();
+            showNotification('Testimonials updated!');
+        }
+
+        function updatePricing() {
+            const pricing = [];
+            contentData.pricing.forEach((_, index) => {
+                const features = document.getElementById(`pricing-features-${index}`).value.split('\n').filter(f => f.trim());
+                pricing.push({
+                    name: document.getElementById(`pricing-name-${index}`).value,
+                    badge: document.getElementById(`pricing-badge-${index}`).value,
+                    originalPrice: document.getElementById(`pricing-original-${index}`).value,
+                    currentPrice: document.getElementById(`pricing-current-${index}`).value,
+                    features: features
+                });
+            });
+            
+            contentData.pricing = pricing;
+            saveContent();
+            updatePreview();
+            showNotification('Pricing updated!');
+        }
+
+        // Save/Load content
+        function saveContent() {
+            localStorage.setItem('aribuy-content', JSON.stringify(contentData));
+        }
+
+        function loadSavedContent() {
+            const saved = localStorage.getItem('aribuy-content');
+            if (saved) {
+                contentData = JSON.parse(saved);
+                
+                // Update form fields
+                document.getElementById('hero-badge').value = contentData.hero.badge;
+                document.getElementById('hero-title').value = contentData.hero.title;
+                document.getElementById('hero-subtitle').value = contentData.hero.subtitle;
+                document.getElementById('hero-cta').value = contentData.hero.cta;
+                
+                populateFeatures();
+                populateTestimonials();
+                populatePricing();
+            }
+        }
+
+        // Update preview
+        function updatePreview() {
+            const iframe = document.getElementById('preview-frame');
+            
+            // Send updated content to iframe
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    
+                    // Update hero section
+                    const heroBadge = iframeDoc.querySelector('.hero-badge');
+                    const heroTitle = iframeDoc.querySelector('.hero-title');
+                    const heroSubtitle = iframeDoc.querySelector('.hero-subtitle');
+                    const heroCta = iframeDoc.querySelector('.cta-button');
+                    
+                    if (heroBadge) heroBadge.textContent = contentData.hero.badge;
+                    if (heroTitle) heroTitle.textContent = contentData.hero.title;
+                    if (heroSubtitle) heroSubtitle.textContent = contentData.hero.subtitle;
+                    if (heroCta) heroCta.textContent = contentData.hero.cta;
+                    
+                    // Update features
+                    const featureCards = iframeDoc.querySelectorAll('.feature-card');
+                    featureCards.forEach((card, index) => {
+                        if (contentData.features[index]) {
+                            const icon = card.querySelector('.feature-icon');
+                            const title = card.querySelector('.feature-title');
+                            const desc = card.querySelector('.feature-description');
+                            
+                            if (icon) icon.textContent = contentData.features[index].icon;
+                            if (title) title.textContent = contentData.features[index].title;
+                            if (desc) desc.textContent = contentData.features[index].description;
+                        }
+                    });
+                    
+                } catch (e) {
+                    console.log('Cross-origin restriction - preview update limited');
+                }
+            };
+            
+            // Reload iframe to apply changes
+            iframe.src = iframe.src;
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 6px;
+                z-index: 1000;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Auto-save on input
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('form-input')) {
+                // Debounce auto-save
+                clearTimeout(window.autoSaveTimeout);
+                window.autoSaveTimeout = setTimeout(() => {
+                    saveContent();
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
