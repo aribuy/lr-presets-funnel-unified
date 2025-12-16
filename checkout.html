@@ -12,7 +12,9 @@
     
     <!-- Payment Gateway Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYourPayPalClientID123&currency=USD"></script>
     <script src="https://app.sandbox.midtrans.com/snap/snap.js"></script>
+    <script src="js/payment-gateway.js"></script>
     
     <style>
         :root {
@@ -679,53 +681,44 @@
                     </div>
                     
                     <div class="payment-methods">
-                        <div class="payment-method active" onclick="selectPayment('card')">
-                            <span class="payment-icon">💳</span>
-                            <span class="payment-label">Credit Card</span>
-                        </div>
-                        <div class="payment-method" onclick="selectPayment('paypal')">
-                            <span class="payment-icon">🟦</span>
-                            <span class="payment-label">PayPal</span>
-                        </div>
-                        <div class="payment-method" onclick="selectPayment('crypto')">
-                            <span class="payment-icon">₿</span>
-                            <span class="payment-label">Crypto</span>
-                        </div>
-                        <div class="payment-method" onclick="selectPayment('local')">
-                            <span class="payment-icon">🏪</span>
-                            <span class="payment-label">Local Bank</span>
-                        </div>
+                        <!-- Payment methods will be dynamically populated by payment gateway -->
                     </div>
                 </div>
 
-                <!-- Card Details -->
-                <div class="form-section" id="cardDetails">
+                <!-- Payment Details - Dynamic Forms -->
+                <div class="payment-form-section" id="stripe-form" style="display: block;">
                     <div class="section-title">
                         <div class="section-number">3</div>
-                        Payment Details
+                        Card Details
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="cardNumber">
-                            Card Number <span class="optional">(demo: optional)</span>
-                        </label>
-                        <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                    <div id="stripe-card-element" class="form-input">
+                        <!-- Stripe Elements will create form elements here -->
                     </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="expiryDate">
-                                Expiry Date <span class="optional">(optional)</span>
-                            </label>
-                            <input type="text" id="expiryDate" class="form-input" placeholder="MM/YY" maxlength="5">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="cvc">
-                                Security Code <span class="optional">(optional)</span>
-                            </label>
-                            <input type="text" id="cvc" class="form-input" placeholder="123" maxlength="4">
-                        </div>
+                    <div id="stripe-card-errors" class="error-message"></div>
+                </div>
+
+                <div class="payment-form-section" id="paypal-form" style="display: none;">
+                    <div class="section-title">
+                        <div class="section-number">3</div>
+                        PayPal Payment
                     </div>
+                    <div id="paypal-button-container"></div>
+                </div>
+
+                <div class="payment-form-section" id="crypto-form" style="display: none;">
+                    <div class="section-title">
+                        <div class="section-number">3</div>
+                        Cryptocurrency Payment
+                    </div>
+                    <p>You will be redirected to complete your crypto payment.</p>
+                </div>
+
+                <div class="payment-form-section" id="bank-form" style="display: none;">
+                    <div class="section-title">
+                        <div class="section-number">3</div>
+                        Bank Transfer
+                    </div>
+                    <p>Bank transfer instructions will be provided after order confirmation.</p>
                 </div>
 
                 <!-- Billing Address -->
@@ -884,17 +877,11 @@
             });
         }
 
-        // Payment method selection
+        // Payment method selection handled by payment gateway
         function selectPayment(method) {
-            document.querySelectorAll('.payment-method').forEach(el => {
-                el.classList.remove('active');
-            });
-            event.target.closest('.payment-method').classList.add('active');
-            
-            // Show/hide card details based on selection
-            const cardDetails = document.getElementById('cardDetails');
-            cardDetails.style.display = method === 'card' ? 'block' : 'none';
-            
+            if (window.paymentGateway) {
+                window.paymentGateway.selectPaymentMethod(method);
+            }
             trackEvent('payment_method_selected', { method: method });
         }
 
@@ -937,8 +924,8 @@
             }, 3000);
         }
 
-        // Form submission
-        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+        // Form submission with real payment processing
+        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!validateForm()) {
@@ -958,30 +945,74 @@
                 zipCode: document.getElementById('zipCode').value || '12345',
                 total: '$47.00',
                 product: 'ARIBUY Presets Collection',
-                demoMode: true
+                demoMode: localStorage.getItem('demoMode') === 'true'
             };
             
-            // Store order data
-            localStorage.setItem('orderData', JSON.stringify(orderData));
-            localStorage.setItem('userEmail', orderData.email);
-            localStorage.setItem('purchaseComplete', 'true');
-            
-            // Track purchase
-            trackEvent('purchase_attempt', {
-                value: 47,
-                currency: 'USD',
-                demo_mode: true
-            });
-            
-            // Simulate payment processing
-            setTimeout(() => {
-                button.innerHTML = '✅ Order Complete!';
-                button.style.background = 'var(--gradient-success)';
+            try {
+                // Process payment through gateway
+                if (window.paymentGateway && !orderData.demoMode) {
+                    const result = await window.paymentGateway.processPayment(orderData);
+                    
+                    if (result.success) {
+                        // Store successful payment data
+                        localStorage.setItem('orderData', JSON.stringify(orderData));
+                        localStorage.setItem('userEmail', orderData.email);
+                        localStorage.setItem('purchaseComplete', 'true');
+                        localStorage.setItem('transactionId', result.transaction_id);
+                        
+                        // Track successful purchase
+                        trackEvent('purchase_completed', {
+                            value: 47,
+                            currency: 'USD',
+                            transaction_id: result.transaction_id,
+                            payment_method: result.method
+                        });
+                        
+                        button.innerHTML = '✅ Payment Successful!';
+                        button.style.background = 'var(--gradient-success)';
+                        
+                        setTimeout(() => {
+                            window.location.href = 'oto1.html';
+                        }, 1500);
+                    } else {
+                        throw new Error('Payment failed');
+                    }
+                } else {
+                    // Demo mode - simulate payment
+                    localStorage.setItem('orderData', JSON.stringify(orderData));
+                    localStorage.setItem('userEmail', orderData.email);
+                    localStorage.setItem('purchaseComplete', 'true');
+                    
+                    trackEvent('purchase_attempt', {
+                        value: 47,
+                        currency: 'USD',
+                        demo_mode: true
+                    });
+                    
+                    setTimeout(() => {
+                        button.innerHTML = '✅ Order Complete!';
+                        button.style.background = 'var(--gradient-success)';
+                        
+                        setTimeout(() => {
+                            window.location.href = 'oto1.html';
+                        }, 1000);
+                    }, 2500);
+                }
+            } catch (error) {
+                console.error('Payment processing failed:', error);
                 
-                setTimeout(() => {
-                    window.location.href = 'oto1.html';
-                }, 1000);
-            }, 2500);
+                button.disabled = false;
+                button.innerHTML = 'Complete Order - $47';
+                button.style.background = 'var(--gradient-hero)';
+                
+                // Show error message
+                alert('Payment failed: ' + error.message + '. Please try again.');
+                
+                trackEvent('purchase_failed', {
+                    error: error.message,
+                    payment_method: window.paymentGateway?.currentMethod
+                });
+            }
         });
 
         // Update progress bar
